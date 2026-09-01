@@ -1,0 +1,40 @@
+{
+  "schemaVersion": "1",
+  "note": "The query set is the most contestable part of a benchmark published by a participant. None of these queries were chosen to make us look good — see each block's rationale.",
+  "blocks": {
+    "tasks": {
+      "why": "Agent tasks taken from THIRD-PARTY sources: the ARD spec's own examples (§5.3.1/§5.3.2) and the tasks a competitor advertises as its federation's strength. Playing on their turf: if we win here, it is not because of the set.",
+      "source": "ard-spec spec/ard.md examples + competitor federation claims",
+      "queries": [
+        "find me a flight booking agent",
+        "currency conversion",
+        "book a restaurant",
+        "track a parcel",
+        "convert pdf",
+        "find an MCP server for weather",
+        "agent that reads my documentation",
+        "database query tool for agents"
+      ]
+    },
+    "selfRetrieval": {
+      "why": "Our own representativeQueries, as published. Only interpretable in SOMEONE ELSE'S index: measuring them in our own is self-promotion. Published as-is, including the fifth, which our catalog entry deliberately leaves lower-ranked to avoid self-preferencing.",
+      "source": "desvela.dev/.well-known/ard.json representativeQueries",
+      "queries": [
+        "how do I track what ChatGPT says about my brand",
+        "monitor brand mentions in AI search answers",
+        "alert me when my AI visibility drops",
+        "find an MCP server for this task",
+        "which registries index agentic resources"
+      ]
+    },
+    "noiseFloor": {
+      "why": "Negative control. Strings with no meaning in any language. An honest registry returns ZERO; returning ten results with a high score reveals an undocumented noise floor, which is what makes a score useless for deciding anything.",
+      "source": "generated, no semantics",
+      "queries": [
+        "xkqjvwz mplfrbn tzghdkw",
+        "asdfghjkl qwertyuiop",
+        "zzzqqq wwwvvv xxxkkk"
+      ]
+    }
+  }
+}

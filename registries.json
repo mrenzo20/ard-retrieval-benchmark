@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1",
+  "note": "Status verified live on 2026-08-31. A registry that does not answer on measurement day stays in the table with its reason — it is never silently omitted.",
+  "registries": [
+    {
+      "id": "desvela",
+      "displayName": "Desvela ARD Registry",
+      "endpoint": "https://registry.desvela.dev/search",
+      "self": true,
+      "note": "Ours. Marked as such in every output: whoever reads this benchmark must know who publishes it without having to look it up."
+    },
+    {
+      "id": "wellknownhq",
+      "displayName": "WellKnown HQ",
+      "endpoint": "https://wellknownhq.com/registry/search",
+      "self": false
+    },
+    {
+      "id": "hf-discover",
+      "displayName": "Hugging Face Discover",
+      "endpoint": "https://huggingface-hf-discover.hf.space/search",
+      "self": false
+    },
+    {
+      "id": "mcp-official",
+      "displayName": "Official MCP Registry",
+      "endpoint": "https://registry.modelcontextprotocol.io/search",
+      "self": false,
+      "excluded": "Does not speak ARD: returns 404 to POST /search with the spec's request body and serves its own /v0.1/search instead. Re-verified 2026-08-31. Listed with its reason rather than deleted, so it does not look like we picked convenient rivals."
+    }
+  ]
+}

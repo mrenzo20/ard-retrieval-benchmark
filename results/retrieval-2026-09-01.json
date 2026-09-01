@@ -1,0 +1,581 @@
+{
+  "schemaVersion": "1",
+  "ranAt": "2026-09-01T11:16:03.635Z",
+  "method": {
+    "samples": 5,
+    "timeoutMs": 30000,
+    "delayBetweenRequestsMs": 800,
+    "querySet": {
+      "tasks": {
+        "count": 8,
+        "why": "Tareas de agente tomadas de las fuentes AJENAS: los ejemplos del propio spec ARD (§5.3.1/§5.3.2) y las tareas que wellknownhq anuncia como fuerza de su federacion, citadas en el doc 24 §3. Jugar en su campo. Si ganamos aqui, no es por el set.",
+        "source": "ard-spec spec/ard.md + wellknownhq federation claims (doc 24 §3)"
+      },
+      "selfRetrieval": {
+        "count": 5,
+        "why": "Nuestras propias representativeQueries. Solo son interpretables en el INDICE AJENO: en el nuestro medirlas es autobombo. Se publican con su resultado tal cual, incluido el quinto, que la accion 2 dejo abajo a proposito para no auto-preferirnos (doc 24 §11 decision 3).",
+        "source": "desvela.dev/.well-known/ard.json representativeQueries"
+      },
+      "noiseFloor": {
+        "count": 3,
+        "why": "Control negativo. Cadenas sin significado en ningun idioma. Un registro honesto devuelve CERO; devolver diez resultados con score alto revela un suelo de ruido no documentado, que es lo que hace inutilizable un score para decidir.",
+        "source": "generadas, sin semantica"
+      }
+    },
+    "disclosure": "Publicado por Desvela, que compite en este cuadro. Su fila va marcada self:true.",
+    "notMeasured": [
+      "Calidad semantica del ranking: exigiria juicio humano de relevancia, y lo pondria una parte interesada.",
+      "Cobertura: la mide el censo mensual con sondeo canary; comparar tamanos de indice sin eso es el error que este proyecto denuncia."
+    ]
+  },
+  "excluded": [
+    {
+      "id": "mcp-official",
+      "endpoint": "https://registry.modelcontextprotocol.io/search",
+      "why": "No habla ARD: devuelve 404 a POST /search con el cuerpo del spec y sirve su propio /v0.1/search. Verificado de nuevo el 2026-08-31. Se deja listado con el motivo en vez de borrarlo, para que no parezca que se eligio a los rivales convenientes."
+    }
+  ],
+  "registries": [
+    {
+      "id": "desvela",
+      "displayName": "Desvela ARD Registry",
+      "endpoint": "https://registry.desvela.dev/search",
+      "self": true,
+      "latencyMs": {
+        "cold": {
+          "samples": 5,
+          "ok": 5,
+          "failed": 0,
+          "median": 214
+        },
+        "warm": {
+          "samples": 5,
+          "ok": 5,
+          "failed": 0,
+          "median": 86
+        },
+        "note": "cold = conexion nueva por peticion (lo que paga una llamada suelta de agente). warm = keep-alive (cliente sostenido)."
+      },
+      "tasks": [
+        {
+          "query": "find me a flight booking agent",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "currency conversion",
+          "results": 1,
+          "duplicates": 0
+        },
+        {
+          "query": "book a restaurant",
+          "results": 1,
+          "duplicates": 0
+        },
+        {
+          "query": "track a parcel",
+          "results": 8,
+          "duplicates": 0
+        },
+        {
+          "query": "convert pdf",
+          "results": 2,
+          "duplicates": 0
+        },
+        {
+          "query": "find an MCP server for weather",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "agent that reads my documentation",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "database query tool for agents",
+          "results": 10,
+          "duplicates": 0
+        }
+      ],
+      "tasksSummary": {
+        "answered": 8,
+        "of": 8,
+        "medianResults": 9,
+        "totalDuplicates": 0
+      },
+      "noiseFloor": [
+        {
+          "query": "xkqjvwz mplfrbn tzghdkw",
+          "results": 0,
+          "scores": []
+        },
+        {
+          "query": "asdfghjkl qwertyuiop",
+          "results": 0,
+          "scores": []
+        },
+        {
+          "query": "zzzqqq wwwvvv xxxkkk",
+          "results": 0,
+          "scores": []
+        }
+      ],
+      "noiseFloorSummary": {
+        "medianResults": 0,
+        "scoreRange": null,
+        "verdict": "limpio: cero resultados ante entrada sin significado"
+      },
+      "selfRetrieval": {
+        "interpretable": false,
+        "why": "Es nuestro propio indice: medir aqui donde salimos es autobombo, no un dato.",
+        "raw": [
+          {
+            "query": "how do I track what ChatGPT says about my brand",
+            "positions": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "monitor brand mentions in AI search answers",
+            "positions": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "alert me when my AI visibility drops",
+            "positions": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "find an MCP server for this task",
+            "positions": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "which registries index agentic resources",
+            "positions": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "first": 1,
+            "of": 10
+          }
+        ]
+      },
+      "duplicates": {
+        "queriesWithDuplicates": 0,
+        "of": 13,
+        "extraEntries": 0,
+        "examples": [],
+        "note": "Clave = url normalizada (lo que un agente llama de verdad). Los duplicados observados son entradas de Desvela publicadas en sus dos dominios: mismo endpoint, distinto urn. Se declara porque el origen es nuestro."
+      }
+    },
+    {
+      "id": "wellknownhq",
+      "displayName": "WellKnown HQ",
+      "endpoint": "https://wellknownhq.com/registry/search",
+      "self": false,
+      "latencyMs": {
+        "cold": {
+          "samples": 5,
+          "ok": 5,
+          "failed": 0,
+          "median": 923
+        },
+        "warm": {
+          "samples": 5,
+          "ok": 5,
+          "failed": 0,
+          "median": 314
+        },
+        "note": "cold = conexion nueva por peticion (lo que paga una llamada suelta de agente). warm = keep-alive (cliente sostenido)."
+      },
+      "tasks": [
+        {
+          "query": "find me a flight booking agent",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "currency conversion",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "book a restaurant",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "track a parcel",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "convert pdf",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "find an MCP server for weather",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "agent that reads my documentation",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "database query tool for agents",
+          "results": 10,
+          "duplicates": 0
+        }
+      ],
+      "tasksSummary": {
+        "answered": 8,
+        "of": 8,
+        "medianResults": 10,
+        "totalDuplicates": 0
+      },
+      "noiseFloor": [
+        {
+          "query": "xkqjvwz mplfrbn tzghdkw",
+          "results": 10,
+          "scores": [
+            56,
+            55,
+            55,
+            54,
+            54,
+            53,
+            53,
+            52,
+            52,
+            51
+          ]
+        },
+        {
+          "query": "asdfghjkl qwertyuiop",
+          "results": 10,
+          "scores": [
+            56,
+            55,
+            55,
+            54,
+            54,
+            53,
+            53,
+            52,
+            52,
+            51
+          ]
+        },
+        {
+          "query": "zzzqqq wwwvvv xxxkkk",
+          "results": 10,
+          "scores": [
+            56,
+            55,
+            55,
+            54,
+            54,
+            53,
+            53,
+            52,
+            52,
+            51
+          ]
+        }
+      ],
+      "noiseFloorSummary": {
+        "medianResults": 10,
+        "scoreRange": [
+          51,
+          56
+        ],
+        "verdict": "suelo de ruido: devuelve resultados ante entrada sin significado"
+      },
+      "selfRetrieval": {
+        "interpretable": true,
+        "atRank1": 4,
+        "of": 5,
+        "detail": [
+          {
+            "query": "how do I track what ChatGPT says about my brand",
+            "positions": [
+              1,
+              2,
+              3
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "monitor brand mentions in AI search answers",
+            "positions": [
+              1,
+              2,
+              10
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "alert me when my AI visibility drops",
+            "positions": [
+              1,
+              2,
+              6,
+              7
+            ],
+            "first": 1,
+            "of": 10
+          },
+          {
+            "query": "find an MCP server for this task",
+            "positions": [
+              6,
+              9
+            ],
+            "first": 6,
+            "of": 10
+          },
+          {
+            "query": "which registries index agentic resources",
+            "positions": [
+              1,
+              2
+            ],
+            "first": 1,
+            "of": 10
+          }
+        ]
+      },
+      "duplicates": {
+        "queriesWithDuplicates": 5,
+        "of": 13,
+        "extraEntries": 8,
+        "examples": [
+          {
+            "query": "how do I track what ChatGPT says about my brand",
+            "key": "https://mcp.apify.com/?tools=desvela/brand-watch",
+            "positions": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "query": "monitor brand mentions in AI search answers",
+            "key": "https://mcp.apify.com/?tools=desvela/brand-watch",
+            "positions": [
+              1,
+              2,
+              10
+            ]
+          },
+          {
+            "query": "alert me when my AI visibility drops",
+            "key": "https://mcp.apify.com/?tools=desvela/brand-watch",
+            "positions": [
+              1,
+              2
+            ]
+          }
+        ],
+        "note": "Clave = url normalizada (lo que un agente llama de verdad). Los duplicados observados son entradas de Desvela publicadas en sus dos dominios: mismo endpoint, distinto urn. Se declara porque el origen es nuestro."
+      }
+    },
+    {
+      "id": "hf-discover",
+      "displayName": "Hugging Face Discover",
+      "endpoint": "https://huggingface-hf-discover.hf.space/search",
+      "self": false,
+      "latencyMs": {
+        "cold": {
+          "samples": 5,
+          "ok": 5,
+          "failed": 0,
+          "median": 1853
+        },
+        "warm": {
+          "samples": 5,
+          "ok": 5,
+          "failed": 0,
+          "median": 1856
+        },
+        "note": "cold = conexion nueva por peticion (lo que paga una llamada suelta de agente). warm = keep-alive (cliente sostenido)."
+      },
+      "tasks": [
+        {
+          "query": "find me a flight booking agent",
+          "results": 9,
+          "duplicates": 0
+        },
+        {
+          "query": "currency conversion",
+          "results": 0,
+          "duplicates": 0
+        },
+        {
+          "query": "book a restaurant",
+          "results": 0,
+          "duplicates": 0
+        },
+        {
+          "query": "track a parcel",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "convert pdf",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "find an MCP server for weather",
+          "results": 9,
+          "duplicates": 0
+        },
+        {
+          "query": "agent that reads my documentation",
+          "results": 10,
+          "duplicates": 0
+        },
+        {
+          "query": "database query tool for agents",
+          "results": 9,
+          "duplicates": 0
+        }
+      ],
+      "tasksSummary": {
+        "answered": 8,
+        "of": 8,
+        "medianResults": 9,
+        "totalDuplicates": 0
+      },
+      "noiseFloor": [
+        {
+          "query": "xkqjvwz mplfrbn tzghdkw",
+          "results": 0,
+          "scores": []
+        },
+        {
+          "query": "asdfghjkl qwertyuiop",
+          "results": 0,
+          "scores": []
+        },
+        {
+          "query": "zzzqqq wwwvvv xxxkkk",
+          "results": 0,
+          "scores": []
+        }
+      ],
+      "noiseFloorSummary": {
+        "medianResults": 0,
+        "scoreRange": null,
+        "verdict": "limpio: cero resultados ante entrada sin significado"
+      },
+      "selfRetrieval": {
+        "interpretable": true,
+        "atRank1": 0,
+        "of": 5,
+        "detail": [
+          {
+            "query": "how do I track what ChatGPT says about my brand",
+            "positions": [],
+            "first": null,
+            "of": 10
+          },
+          {
+            "query": "monitor brand mentions in AI search answers",
+            "positions": [],
+            "first": null,
+            "of": 7
+          },
+          {
+            "query": "alert me when my AI visibility drops",
+            "positions": [],
+            "first": null,
+            "of": 2
+          },
+          {
+            "query": "find an MCP server for this task",
+            "positions": [],
+            "first": null,
+            "of": 9
+          },
+          {
+            "query": "which registries index agentic resources",
+            "positions": [],
+            "first": null,
+            "of": 10
+          }
+        ]
+      },
+      "duplicates": {
+        "queriesWithDuplicates": 0,
+        "of": 13,
+        "extraEntries": 0,
+        "examples": [],
+        "note": "Clave = url normalizada (lo que un agente llama de verdad). Los duplicados observados son entradas de Desvela publicadas en sus dos dominios: mismo endpoint, distinto urn. Se declara porque el origen es nuestro."
+      }
+    }
+  ]
+}
