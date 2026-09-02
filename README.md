@@ -22,7 +22,9 @@ Latest edition: [`results/`](results/) · one file per run date. A human-readabl
 ## What it does NOT measure — said here, not in a footnote
 
 - **Semantic ranking quality.** It would require human relevance judgment, and that judgment would come from an interested party.
-- **Coverage.** Comparing index sizes without probing for catch-all servers is exactly the error this benchmark's publisher [calls out](https://desvela.ai/census/methodology): on `/.well-known/ard.json` — a path the spec introduced on 26 Aug 2026 that **nobody served yet** — a naive counter finds 745 "publishers" in the Tranco top-100K. Twelve sampled live: none published anything. Coverage claims need canary probing; our monthly census does that, this benchmark does not.
+- **Coverage.** Comparing index sizes without probing for catch-all servers is exactly the error this benchmark's publisher [calls out](https://desvela.ai/census/methodology). Worked example: on **1 Sep 2026**, on `/.well-known/ard.json` — a path the ARD spec had introduced six days earlier, which **no third party served on that date** (ten candidates probed by hand on 27 Aug, all 404) — a naive counter found **745 "publishers"** in the Tranco top-100K. Twelve sampled live: none published anything; they were servers answering 200 to any URL.
+
+  *Update, 2 Sep 2026: real adoption has begun — [neuronto.com](https://neuronto.com/.well-known/ard.json) serves a genuine manifest (canary-clean). The 745 figure is a dated measurement, not a claim about today, and it is left standing because it is the point: the zero baseline was captured before adoption existed, which is not reconstructible afterwards.* Coverage claims need canary probing; our monthly census does that, this benchmark does not.
 
 ## Where the queries come from
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1",
-  "note": "Status verified live on 2026-08-31. A registry that does not answer on measurement day stays in the table with its reason — it is never silently omitted.",
+  "note": "Status verified live on 2026-09-02. A registry that does not answer on measurement day stays in the table with its reason — it is never silently omitted.",
   "registries": [
     {
       "id": "desvela",
@@ -20,6 +20,13 @@
       "displayName": "Hugging Face Discover",
       "endpoint": "https://huggingface-hf-discover.hf.space/search",
       "self": false
+    },
+    {
+      "id": "neuronto",
+      "displayName": "Neuronto",
+      "endpoint": "https://neuronto.com/search",
+      "self": false,
+      "note": "Added 2026-09-02. Verified live before adding, not assumed from its listing: POST /search returns ARD-shaped results with identifier, score and source, and it serves a genuine canary-clean /.well-known/ard.json. Its crawler indexes us, which is federation working as the spec describes — and is disclosed here because it means the two registries are not independent observers of each other."
     },
     {
       "id": "mcp-official",
